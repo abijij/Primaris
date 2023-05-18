@@ -1,6 +1,4 @@
-//Comparar instancias y como clonar un obeto con una instancia  diferente a la original
-//== compara si es igual , === si es identico se refiere que tenga los mismos varoles y el tipo de dato identico
-// ... Spread es como new para Java es para crear un nuevo objeto esparciendo los datos de otro, seria esparcir o copiar cada atributo del original a otro completamente nuevo
+//Objetos con arreglos
 const invoice = {
     id: 10,
     name: 'Compras de Oficina',
@@ -52,21 +50,11 @@ const invoice = {
         return `Lupercal Lupercal Lupercal ${this.client.name}`
     }
 };
+//invoice.client.name = 'Magnus'
+invoice.client.address.street = 'Cthonia';
 
+console.log(invoice);
 
-// const invoice2 = invoice;
-const invoice2 = {...invoice };
-
-const result = invoice === invoice2;
-
-if (result) {
-    console.log(result);
-}else {
-    console.log(`No son iguales`);
-}
-
-invoice2.id = 333;
-
-console.log(invoice.id);
-console.log(invoice2.id);
-
+const greeting = invoice.greeting();
+console.log(greeting);
+console.log(`Total traidores: ${invoice.total()}`);
