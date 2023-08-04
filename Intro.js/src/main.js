@@ -1,18 +1,140 @@
-const user ={
-    username: 'Edgar',
-    email: 'edgar.abijij24@gmail.com',
-    age: 26,
-    ranking: 9,
+const Angron ={
+    Primarca: 'Angron',
+    godChaos: 'Khorne ',
+    legion: 'Deboradores de mundos',
+    planet: 'Nuceria',
+    age: 400,
+    CountLegion: 2000000,
 }
+const invoices =[
+   {
+    id: 1,
+    name: 'Compras de Oficina',
+    date: new Date(),
+    client: {
+        name: 'Horus',
+        lastname: 'Lupercal',
+        address: {
+            street: 'Terra',
+            number: 22,
+        }
+    },
+    items : [
+        {
+            Primarca: 'Mortarion',
+            godChaos: 'Nurgle',
+            legion: 'Guardia de la muerte',
+            planet: 'Barbarus',
+            age: 800,
+            CountLegion: 1000000,
+        },
+        {
+            Primarca: 'Magnus',
+            godChaos: 'Tzeentch ',
+            legion: 'Los mil hijos',
+            planet: 'Prospero',
+            age: 100,
+            CountLegion: 1000,
+        },
+        Angron,
+    ]
+    
+  },
+  {
+    id: 2,
+    name: 'Compras de Casa',
+    date: new Date(),
+    client: {
+        name: 'Horus',
+        lastname: 'Lupercal',
+        address: {
+            street: 'Terra',
+            number: 22,
+        }
+    },
+    items : [
+        {
+            Primarca: 'Leon',
+            godChaos: 'No',
+            legion: 'Angeles Oscuros',
+            planet: 'Kaliban',
+            age: 10000,
+            CountLegion: 34234,
+        },
+        {
+            Primarca: 'Guilliman',
+            godChaos: 'No ',
+            legion: 'Ultra marines',
+            planet: 'Mackree',
+            age: 10049,
+            CountLegion: 534534,
+        },
+        {
+            Primarca: 'Rogal',
+            godChaos: 'No ',
+            legion: 'Puños impreirales',
+            planet: 'Terra',
+            age: 700,
+            CountLegion: 20000234200,
+        },
+    ]
+    
+  },
+  {
+    id: 3,
+    name: 'Compras de Negocio',
+    date: new Date(),
+    client: {
+        name: 'Horus',
+        lastname: 'Lupercal',
+        address: {
+            street: 'Terra',
+            number: 22,
+        }
+    },
+    items : [
+        {
+            Primarca: 'Alfarius',
+            godChaos: 'Cavala',
+            legion: 'Legion Alpha',
+            planet: 'Terra',
+            age: 2312,
+            CountLegion: 50000,
+        },
+        {
+            Primarca: 'San Ginius',
+            godChaos: 'No ',
+            legion: 'Angeles Sangrientos',
+            planet: 'Baal Secundus',
+            age: 600,
+            CountLegion: 100002,
+        },
+       
+    ]
+    
+  },
+];
 
-//Forma anticuada con mas linea y se define cada variable de forma indepoendiente
-const username = user.username;
-const ranking = user.ranking;
-const age = user.age;
+const invoicesName = invoices.map(i => i.name)
 
+console.log(invoicesName)
+console.log(invoices)
 
-//forma mas comoda de desestructurar
-// const {username, ranking, age} = user;
+const invoicesClient = invoices.map(i => i.client.lastname)
+console.log(invoicesClient)
 
-console.log(`${username} tiene ${age} de edad` );
-console.log(ranking);
+const invoiceFind = invoices.find( i=> i.client.name === 'Horus')
+
+console.log(invoiceFind)
+
+const invoiceFilter = invoices.filter( i => i.id > 1)
+console.log(invoiceFilter)
+
+const invoiceDelete = invoices.filter( i => i.id  != 2)
+console.log(invoicinvoiceDeleteeFilter)
+
+const invoiceFilter2 = invoices.filter( i => i.items.includes(Angron) )
+console.log(invoiceFilter2)
+
+const result = invoices.some(i=> i.client.name === 'Horus')
+console.log(result)
