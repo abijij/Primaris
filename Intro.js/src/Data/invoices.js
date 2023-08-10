@@ -125,11 +125,30 @@
     return invoices.find( i=> i.id === id)
   }
 
+  const findInvoiceById = (id) => {
+
+    const promise = new Promise((resolve, reject) => {
+
+        setTimeout(() => {
+            const result = InvoiceById(id);
+            if (result) {
+                resolve(result);
+            }else{
+                reject('No se encontro el id de la factura')
+            }
+            
+        }, 2500 );
+    });
+    return promise;
+
+}
+
   export {
     Angron,
     invoices,
     invoiceFindByClientName as default,
-    InvoiceById
+    InvoiceById,
+    findInvoiceById
     
   }
   
