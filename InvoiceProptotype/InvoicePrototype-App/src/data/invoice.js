@@ -20,17 +20,20 @@ export const Invoice = {
     },
     items:[
         {
+            id:1,
             product:'LCD Newland',
             price:1800,
             quantity:1,
         },
         {
-            roduct:'Tarjeta de carga Newland',
+            id: 2,
+            product:'Tarjeta de carga Newland',
             price:800,
             quantity:1,
         },
         {
-            roduct:'Tarjeta Madre Newland',
+            id:3,
+            product:'Tarjeta Madre Newland',
             price:2900,
             quantity:1,
         },

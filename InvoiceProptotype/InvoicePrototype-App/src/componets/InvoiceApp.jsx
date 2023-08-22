@@ -1,37 +1,34 @@
 import { Invoice } from "../data/invoice"
 import { getInvoice } from "../services/getInvoice"
+import { InvoiceView } from "./InvoiceView";
+import { ClientView } from "./ClientView";
+import { SupplierView } from "./SupplierView";
+import { ListItemsView } from "./ListItemsView";
 
 export const InvoiceApp = () => {
-        const {id, name, client, company, items} = getInvoice();//Destructuracion 
-        const { name:nameClient, addres} = client;
-        const{ country, city, state } = addres;
-        const {name:nameCompany, fiscalNumber} = company
+    const { id, name, client, company, items } = getInvoice();//Destructuracion 
     return (
         <>
-            <h1>Ejemplo Factura</h1>
-            <ul>
-                <li>Id: {id}</li>
-                <li>Name: {name}</li>
-            </ul>
+            <div className="container">
+                <div className="card my-3" >
+                    <div class="card-header">
+                        Ejemplo Factura
+                    </div>
+                    <div className="card-body">
+                        <InvoiceView id={id} name={name} />
+                        <div className="row my-3">
+                            <div className="col">
+                                <ClientView title="Datos del Cliente" client={client} />
+                            </div>
+                            <div className="col">
+                                <SupplierView title="Datos de la Empresa" company={company} />
+                            </div>
+                        </div>
+                        <ListItemsView title="Productos de la Factura " items={items} />
+                    </div>
+                </div>
+            </div>
 
-            <h3>Datos del cliente</h3>
-            <ul>
-                <li>Client: {nameClient}</li>
-                <li>Pais: {country}</li>
-                <li>Ciudad: {city}</li>
-                <li>Estado: {state}</li>
-            </ul>
-
-            <h3>Datos del Provedor</h3>
-            <ul>
-                <li>Nombre: {nameCompany} </li>
-                <li>Numero Fiscal: {fiscalNumber}</li>
-            </ul>
-
-            <h4> Productos de la factura</h4>
-            <lu>
-                
-            </lu>
         </>
     )
 
