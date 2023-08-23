@@ -1,3 +1,5 @@
+import propTypes from 'prop-types'
+
 export const SupplierView = ({ company, title }) => {
     const { name: nameCompany, fiscalNumber } = company
     return (
@@ -9,4 +11,10 @@ export const SupplierView = ({ company, title }) => {
             </ul>
         </>
     )
+}
+
+SupplierView.propTypes = {
+
+    title: propTypes.string.isRequired,
+    company: propTypes.object.isRequired
 }

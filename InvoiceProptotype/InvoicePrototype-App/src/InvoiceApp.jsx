@@ -1,17 +1,18 @@
-import { Invoice } from "../data/invoice"
-import { getInvoice } from "../services/getInvoice"
-import { InvoiceView } from "./InvoiceView";
-import { ClientView } from "./ClientView";
-import { SupplierView } from "./SupplierView";
-import { ListItemsView } from "./ListItemsView";
+import { Invoice } from "./data/invoice"
+import { getInvoice } from "./services/getInvoice"
+import { InvoiceView } from "./componets/InvoiceView";
+import { ClientView } from "./componets/ClientView";
+import { SupplierView } from "./componets/SupplierView";
+import { ListItemsView } from "./componets/ListItemsView";
+import { TotalView } from "./componets/TotalView";
 
 export const InvoiceApp = () => {
-    const { id, name, client, company, items } = getInvoice();//Destructuracion 
+    const { total ,id, name, client, company, items } = getInvoice();//Destructuracion 
     return (
         <>
             <div className="container">
                 <div className="card my-3" >
-                    <div class="card-header">
+                    <div className="card-header">
                         Ejemplo Factura
                     </div>
                     <div className="card-body">
@@ -25,6 +26,7 @@ export const InvoiceApp = () => {
                             </div>
                         </div>
                         <ListItemsView title="Productos de la Factura " items={items} />
+                        <TotalView total={total}/>
                     </div>
                 </div>
             </div>
