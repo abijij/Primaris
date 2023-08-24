@@ -3,41 +3,51 @@ export const Invoice = {
     name: 'Componetes Newland',
     client: {
         name: 'CFE OAXACA',
-        addres:{
+        addres: {
             country: 'Mexico',
-            city:'San Juan Bautista Tuxtepec',
-            state:'Oaxaca'
+            city: 'San Juan Bautista Tuxtepec',
+            state: 'Oaxaca'
         },
     },
-    company:{
+    company: {
         name: 'Pos Dev',
-        fiscalNumber:'Pendiente',
-        addres:{
-            country:'Mexico',
-            city:'CDMX',
-            state:'Albaro Obregon'
+        fiscalNumber: 'Pendiente',
+        addres: {
+            country: 'Mexico',
+            city: 'CDMX',
+            state: 'Albaro Obregon'
         }
     },
-    items:[
+
+    technical: {
+        name: 'Edgar',
+        lastname: 'Gutierrez',
+        employee_number: '0001',
+        data: {
+            phone_number: 5583955413,
+            area: 'Mantenimiento',
+        }
+    },
+    items: [
         {
-            id:1,
-            product:'LCD Newland',
-            price:1800,
-            quantity:1,
+            id: 1,
+            product: 'LCD Newland',
+            price: 1800,
+            quantity: 1,
         },
         {
             id: 2,
-            product:'Tarjeta de carga Newland',
-            price:800,
-            quantity:1,
+            product: 'Tarjeta de carga Newland',
+            price: 800,
+            quantity: 1,
         },
         {
-            id:3,
-            product:'Tarjeta Madre Newland',
-            price:2900,
-            quantity:1,
+            id: 3,
+            product: 'Tarjeta Madre Newland',
+            price: 2900,
+            quantity: 1,
         },
-      
-        
+
+
     ]
 }
