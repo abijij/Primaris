@@ -1,6 +1,6 @@
 import { RowItemView } from "./RowItemView"
 import propTypes from 'prop-types'
-export const ListItemsView = ({ title, items }) => {
+export const ListItemsView = ({ title, items, handlerDelete}) => {
     return (
         <>
             <h4> {title}</h4>
@@ -10,11 +10,17 @@ export const ListItemsView = ({ title, items }) => {
                         <th>Nombre</th>
                         <th>Precio</th>
                         <th>Cantidad</th>
+                        <th>Eliminar</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {items.map(({ product, price, quantity, id }) => (
-                       <RowItemView key={id} product={product} price={price} quantity={quantity} />
+                    {items.map(({ id, product, price, quantity }) => (
+                       <RowItemView key={id} 
+                       id={id}
+                       product={product} 
+                       price={price} 
+                       quantity={quantity}
+                       handlerDelete={id => handlerDelete(id)} />
                     )
                     )}
 

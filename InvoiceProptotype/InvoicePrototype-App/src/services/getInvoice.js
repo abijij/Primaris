@@ -9,8 +9,14 @@ export const getInvoice = () => {
 
     // });
 
-    const total = Invoice.items
+    const total = caculateTotal(Invoice.items)
+ 
+    return { ...Invoice, total};
+}
+
+export const caculateTotal = (items = []) => {
+
+   return items
         .map(item => item.price * item.quantity)
         .reduce((accumulator, currentValue) => accumulator + currentValue, 0);
-    return { ...Invoice, total: total };
 }
