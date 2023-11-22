@@ -1,78 +1,31 @@
-import React, { useReducer } from 'react'
-import { UserForm } from './componets/UserForm'
-import { UsersList } from './componets/UsersList'
-import { usersReducer } from './reducers/usersReducer';
-import { useState } from 'react';
+import UsersPage from './pages/UsersPages';
+import { LoginPage } from './auth/pages/LoginPage';
+import { NavBar } from './componets/layout/NavBar';
+import { useAuth } from './auth/hooks/useAuth';
 
-
-const initialUsers = [
-    {
-        id: 1,
-        userName: 'Edgar',
-        password: '12345',
-        email: 'edgar.abijij24@gmail.com'
-    },
-];
-
-const initialFormUserData = {
-
-    userName: '',
-    password: '',
-    email: '',
-
+const initialLogin = JSON.parse(sessionStorage.getItem('login')) || {
+    isAuth: false,
+    user: undefined,
 }
-
 const UsersApp = () => {
 
-    const [users, dispatch] = useReducer(usersReducer, initialUsers);
-    const [selected, setSelected] = useState(initialFormUserData)
-
-    const handlerAddUser = (user) => {
-        // console.log(user);
-
-        dispatch({
-            type: 'addUser',
-            payload: user,
-
-        })
-    }
-
-    const handlerRemoveUser = (id) => {
-
-        dispatch({
-            type: 'removeUser',
-            payload: id,
-        })
-
-    }
-
-    const handlerUserSelectForm = (user) => {
-        setSelected({...user})
-    }
-
+    const { login, handlerLogin, handlerLogout } = useAuth()
 
     return (
-        <div className='container my-4'>
-            <h2>Users App</h2>
-            <div className='row'>
-                <div className='col'>
-                    <UserForm
-                        selected={selected}
-                        initialFormUserData={initialFormUserData}
-                        handlerAddUser={handlerAddUser} />
-                </div>
-                <div className='col'>
-                    {users.length === 0
-                        ? <div className='alert alert-warning'>No hay usuarios en el sistema</div>
-                        : <UsersList
-                            handlerRemoveUser={handlerRemoveUser}
-                            handlerUserSelectForm={handlerUserSelectForm}
-                            users={users}
-                        />}
-                </div>
-            </div>
-        </div>
-    )
+        <>
+            {login && login.isAuth
+                ? (
+                    <>
+                        <NavBar login={login} handlerLogout={handlerLogout} />
+                        <UsersPage />
+                    </>
+                )
+                : <LoginPage handlerLogin={handlerLogin} />
+            }
+
+
+        </>
+    );
 }
 
 export default UsersApp

@@ -1,5 +1,5 @@
 
-export const UserRow = ({ id, userName, email, password, handlerRemoveUser, handlerUserSelectForm }) => {
+export const UserRow = ({ id, userName, email, handlerRemoveUser, handlerUserSelectForm }) => {
 
 
     return (
@@ -16,7 +16,6 @@ export const UserRow = ({ id, userName, email, password, handlerRemoveUser, hand
                         id,
                         userName,
                         email, 
-                        password,
                     })}
                 >
                     Update

@@ -1,23 +1,17 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 
-const initialFormUserData = {
 
-    userName: '',
-    password: '',
-    email: '',
-
-}
-
-export const UserForm = ({handlerAddUser, initialFormUserData, selected}) => {
+export const UserForm = ({ handlerAddUser, initialFormUserData, selected, handlerCloseForm }) => {
 
     const [userForm, setUserForm] = useState(initialFormUserData)
 
-    const { userName, password, email } = userForm;
+    const { id, userName, password, email } = userForm;
 
     useEffect(() => {
         setUserForm({
-            ...selected, 
-            //password:''
+            ...selected,
+            password: ''
         });
     }, [selected])
 
@@ -36,18 +30,24 @@ export const UserForm = ({handlerAddUser, initialFormUserData, selected}) => {
 
     const onSumit = (event) => {
         event.preventDefault();
-        if (!userName || !password || !email) {
-            alert('Debe completar los campos del formulario');
+        if (!userName || (!password && id === 0) || !email) {
+            Swal.fire(
+                'Error de validacion',
+                'Debe completar los campos del formulario',
+                'error'
+            );
             return;
 
         }
         // console.log('Enviando el formulario ...')
-
-        // console.log(userForm)
-
         //Guarda el user en el listado de usuarios
         handlerAddUser(userForm);
         setUserForm(initialFormUserData);
+    }
+
+    const onCloseForm = () => {
+        handlerCloseForm();
+        setUserForm(initialFormUserData)
     }
 
 
@@ -60,14 +60,17 @@ export const UserForm = ({handlerAddUser, initialFormUserData, selected}) => {
                 value={userName}
                 onChange={onInputChange}
             />
-            <input
-                className="form-control my-3 w-75"
-                placeholder="Password"
-                type="password"
-                name="password"
-                value={password}
-                onChange={onInputChange}
-            />
+            {
+                id > 0 || <input
+                    className="form-control my-3 w-75"
+                    placeholder="Password"
+                    type="password"
+                    name="password"
+                    value={password}
+                    onChange={onInputChange}
+                />
+            }
+
             <input
                 className="form-control my-3 w-75"
                 placeholder="Email"
@@ -75,11 +78,24 @@ export const UserForm = ({handlerAddUser, initialFormUserData, selected}) => {
                 value={email}
                 onChange={onInputChange}
             />
+            <input type="hidden"
+                name='id'
+                value={id}
+            />
             <button
                 className="btn btn-primary"
                 type="submit"
             >
-                Create
+                {
+                    id > 0 ? 'Edit' : 'Create'
+                }
+            </button>
+
+            <button
+                className="btn btn-primary mx-2"
+                type="button"
+                onClick={() => onCloseForm()}>
+                Close
             </button>
 
         </form>
