@@ -8,9 +8,11 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
+openjdk-17.0.2_windows-x64_bin
 dist
 dist-ssr
 *.local
+
 
 # Editor directories and files
 .vscode/*
